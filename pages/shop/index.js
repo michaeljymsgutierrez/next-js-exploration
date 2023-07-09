@@ -7,7 +7,9 @@ function ShopPage() {
   const routeModel = useShopRoute()
   const controllerModel = useShopController()
   const posts = routeModel.posts
+
   console.log('counting re-renders', (counter += 1))
+
   return (
     <>
       <h2>Clicked Post: {controllerModel.clickedPostId} </h2>
