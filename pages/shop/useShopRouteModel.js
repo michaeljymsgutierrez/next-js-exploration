@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 function useShopRoute() {
   const [posts, setPosts] = useState([])
+  const [users, setUsers] = useState([])
   const isBrowser = () => typeof window !== 'undefined'
 
   if (isBrowser()) {
@@ -14,8 +15,11 @@ function useShopRoute() {
     }
 
     // Listen onload
-    window.onload = function () {
+    window.onload = async function () {
       console.log('Load finished')
+
+      const usersResult = await queryUsers()
+      setUsers(usersResult)
     }
   }
 
@@ -25,7 +29,13 @@ function useShopRoute() {
     )
   }
 
-  return { posts }
+  function queryUsers() {
+    return fetch('https://jsonplaceholder.typicode.com/users').then(
+      (response) => response.json()
+    )
+  }
+
+  return { posts, users }
 }
 
 export default useShopRoute
