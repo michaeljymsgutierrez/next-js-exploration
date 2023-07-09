@@ -1,4 +1,5 @@
-import useShopRoute from './useShopRouteModel'
+import useShopRoute from './useShopRoute'
+import useShopController from './useShopController'
 
 function ShopPage() {
   const model = useShopRoute()
