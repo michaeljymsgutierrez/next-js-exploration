@@ -3,7 +3,7 @@ import useShopController from './useShopController'
 
 let counter = 0
 
-function ShopPage() {
+function PostsPage() {
   const routeModel = useShopRoute()
   const controllerModel = useShopController()
   const posts = routeModel.posts
@@ -13,7 +13,7 @@ function ShopPage() {
   return (
     <>
       <h2>Clicked Post: {controllerModel.clickedPostId} </h2>
-      <h1>Shop Page Posts</h1>
+      <h1>Posts Page</h1>
       {posts.map((post, index) => (
         <div key={index}>
           <h3> {post.title}</h3>
@@ -28,4 +28,4 @@ function ShopPage() {
   )
 }
 
-export default ShopPage
+export default PostsPage
