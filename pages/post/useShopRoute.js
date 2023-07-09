@@ -1,26 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 function useShopRoute() {
   const [posts, setPosts] = useState([])
   const [users, setUsers] = useState([])
-  const isBrowser = () => typeof document !== 'undefined'
 
-  if (isBrowser()) {
-    document.onreadystatechange = async function () {
-      if (document.readyState === 'loading') {
-        // Do something here
-      }
-      if (document.readyState === 'interactive') {
-        // Do something here
-      }
-      if (document.readyState === 'complete') {
-        const postsResult = await queryPosts()
-        const usersResult = await queryUsers()
-        setPosts(postsResult)
-        setUsers(usersResult)
-      }
+  useEffect(() => {
+    async function fetchData() {
+      const postsResult = await queryPosts()
+      const usersResult = await queryUsers()
+      setPosts(postsResult)
+      setUsers(usersResult)
     }
-  }
+    fetchData()
+  }, [])
 
   function queryPosts() {
     return fetch('https://jsonplaceholder.typicode.com/posts').then(
