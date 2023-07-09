@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 
-function useShopController(props) {
+function useShopController() {
   const [clickedPostId, setClickedPostId] = useState(null)
-  console.log(props);
   function viewPostId(postId) {
     setClickedPostId(postId)
   }
