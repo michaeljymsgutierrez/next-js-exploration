@@ -5,17 +5,17 @@ function useShopRoute() {
   const isBrowser = () => typeof window !== 'undefined'
 
   if (isBrowser()) {
-    // Listen on onreadystatechange
+    // Listen onreadystatechange
     document.onreadystatechange = async function () {
-      // console.log('Load started')
+      console.log('Load started')
 
       const postsResult = await queryPosts()
       setPosts(postsResult)
     }
 
-    // Listen on onload
+    // Listen onload
     window.onload = function () {
-      // console.log('Load finished')
+      console.log('Load finished')
     }
   }
 
