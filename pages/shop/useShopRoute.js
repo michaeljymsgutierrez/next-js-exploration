@@ -11,7 +11,7 @@ function useShopRoute() {
       console.log('Load started')
 
       const postsResult = await queryPosts()
-      setPosts(postsResult)
+      // setPosts(postsResult)
     }
 
     // Listen onload

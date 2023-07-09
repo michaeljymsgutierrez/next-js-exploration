@@ -1,18 +1,24 @@
 import useShopRoute from './useShopRoute'
 import useShopController from './useShopController'
 
-function ShopPage() {
-  const model = useShopRoute()
-  const posts = model.posts
+let counter = 0
 
+function ShopPage() {
+  const routeModel = useShopRoute()
+  const controllerModel = useShopController()
+  const posts = routeModel.posts
+  console.log('counting re-renders', (counter += 1))
   return (
     <>
+      <h2>Clicked Post: {controllerModel.clickedPostId} </h2>
       <h1>Shop Page Posts</h1>
       {posts.map((post, index) => (
         <div key={index}>
           <h3> {post.title}</h3>
           <p>{post.body}</p>
-          <button>View ID</button>
+          <button onClick={() => controllerModel.viewPostId(post.id)}>
+            View ID
+          </button>
           <hr />
         </div>
       ))}

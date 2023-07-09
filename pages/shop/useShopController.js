@@ -1,9 +1,12 @@
+import React, { useState } from 'react'
+
 function useShopController() {
-  function viewPostId(post) {
-    window.alert(post.id)
+  const [clickedPostId, setClickedPostId] = useState(null)
+  function viewPostId(postId) {
+    // setClickedPostId(postId)
   }
 
-  return { viewPostId }
+  return { clickedPostId, viewPostId }
 }
 
 export default useShopController
