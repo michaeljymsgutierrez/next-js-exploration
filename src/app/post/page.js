@@ -1,14 +1,17 @@
-import useShopRoute from './useShopRoute'
-import useShopController from './useShopController'
+"use client";
 
-let counter = 0
+import useShopRoute from "./useShopRoute";
+import useShopController from "./useShopController";
+
+let counter = 0;
 
 function PostsPage() {
-  const routeModel = useShopRoute()
-  const controllerModel = useShopController()
-  const posts = routeModel.posts
+  const { posts, users } = useShopRoute();
+  const controllerModel = useShopController();
 
-  console.log('counting re-renders', (counter += 1))
+  if (!posts) return <h1>Loading...</h1>;
+
+  console.log("counting re-renders", (counter += 1));
 
   return (
     <>
@@ -25,7 +28,7 @@ function PostsPage() {
         </div>
       ))}
     </>
-  )
+  );
 }
 
-export default PostsPage
+export default PostsPage;
