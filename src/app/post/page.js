@@ -1,13 +1,13 @@
 "use client";
 
-import useShopRoute from "./useShopRoute";
-import useShopController from "./useShopController";
+import Model from "./model";
+import Controller from "./controller";
 
 let counter = 0;
 
 function PostsPage() {
-  const model = useShopRoute();
-  const controller = useShopController(model);
+  const model = Model();
+  const controller = Controller(model);
 
   if (!controller.posts) return <h1>Loading...</h1>;
 
@@ -15,9 +15,7 @@ function PostsPage() {
 
   return (
     <>
-      <span>{controller.posts.length}</span>
       <h2>Clicked Post: {controller.clickedPostId}</h2>
-      <button onClick={controller.removePost}>Remove Post</button>
       <h1>Posts Page</h1>
       {controller.posts.map((post, index) => (
         <div key={index}>
@@ -25,6 +23,9 @@ function PostsPage() {
           <p>{post.body}</p>
           <button onClick={() => controller.viewPostId(post.id)}>
             View ID
+          </button>
+          <button onClick={() => controller.removePost(post.id)}>
+            Remove
           </button>
           <hr />
         </div>
