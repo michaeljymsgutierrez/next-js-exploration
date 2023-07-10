@@ -2,11 +2,13 @@ import { useState, useEffect } from 'react'
 
 function Controller(props) {
   const [posts, setPosts] = useState([])
+  const [users, setUsers] = useState([])
   const [clickedPostId, setClickedPostId] = useState(null)
 
   useEffect(() => {
     setPosts(props.posts)
-  }, [props.posts])
+    setUsers(props.users)
+  }, [props.posts, props.users])
 
   function viewPostId(postId) {
     setClickedPostId(postId)
