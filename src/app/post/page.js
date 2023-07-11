@@ -2,6 +2,7 @@
 
 import Model from './model'
 import Controller from './controller'
+import DailyRandomFact from '../../components/daily-random-fact'
 
 let counter = 0
 
@@ -15,6 +16,8 @@ function PostsPage() {
 
   return (
     <>
+      <DailyRandomFact />
+      <hr />
       <h2>Selected Post ID: {controller.clickedPostId}</h2>
       <hr />
       <h2>Posts Page</h2>
