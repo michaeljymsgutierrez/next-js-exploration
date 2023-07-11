@@ -5,8 +5,8 @@ import Controller from './controller'
 
 let counter = 0
 
-function PostsPage({ params, searchParams }) {
-  const model = Model(params, searchParams)
+function PostsPage() {
+  const model = Model()
   const controller = Controller(model)
 
   if (!controller.posts) return <h1>Loading...</h1>
@@ -15,12 +15,23 @@ function PostsPage({ params, searchParams }) {
 
   return (
     <>
-      <h2>Post ID: {controller.clickedPostId}</h2>
+      <h2>Selected Post ID: {controller.clickedPostId}</h2>
+      <hr />
       <h2>Posts Page</h2>
       {controller.posts.map((post, index) => (
         <div key={index}>
-          <h3>{post.title}</h3>
-          <p>{post.body}</p>
+          <p>
+            <b>ID: </b>
+            {post.id}
+          </p>
+          <p>
+            <b>TITLE: </b>
+            {post.title}
+          </p>
+          <p>
+            <b>BODY: </b>
+            {post.body}
+          </p>
           <button onClick={() => controller.viewPostId(post.id)}>
             View ID
           </button>

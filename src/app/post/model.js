@@ -1,7 +1,7 @@
 import useSWR from 'swr'
 import { fetcher } from '../../utils/services/fetcher'
 
-function Model(params, searchParams) {
+function Model() {
   const { data: posts } = useSWR(
     'https://jsonplaceholder.typicode.com/posts',
     fetcher
