@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 
 function Controller(props) {
+  const router = useRouter()
   const [posts, setPosts] = useState([])
   const [users, setUsers] = useState([])
   const [clickedPostId, setClickedPostId] = useState(null)
@@ -19,7 +21,11 @@ function Controller(props) {
     setPosts(updatedPosts)
   }
 
-  return { clickedPostId, viewPostId, posts, removePost }
+  function viewUser(userId) {
+    router.push(`/post?user-id=${userId}`)
+  }
+
+  return { clickedPostId, posts, viewPostId, removePost, viewUser }
 }
 
 export default Controller

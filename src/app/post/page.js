@@ -1,22 +1,22 @@
-"use client";
+'use client'
 
-import Model from "./model";
-import Controller from "./controller";
+import Model from './model'
+import Controller from './controller'
 
-let counter = 0;
+let counter = 0
 
-function PostsPage() {
-  const model = Model();
-  const controller = Controller(model);
+function PostsPage({ params, searchParams }) {
+  const model = Model(params, searchParams)
+  const controller = Controller(model)
 
-  if (!controller.posts) return <h1>Loading...</h1>;
+  if (!controller.posts) return <h1>Loading...</h1>
 
-  console.log("counting re-renders", (counter += 1));
+  console.log('counting re-renders', (counter += 1))
 
   return (
     <>
-      <h2>Clicked Post: {controller.clickedPostId}</h2>
-      <h1>Posts Page</h1>
+      <h2>Post ID: {controller.clickedPostId}</h2>
+      <h2>Posts Page</h2>
       {controller.posts.map((post, index) => (
         <div key={index}>
           <h3>{post.title}</h3>
@@ -24,14 +24,15 @@ function PostsPage() {
           <button onClick={() => controller.viewPostId(post.id)}>
             View ID
           </button>
-          <button onClick={() => controller.removePost(post.id)}>
-            Remove
+          <button onClick={() => controller.removePost(post.id)}>Remove</button>
+          <button onClick={() => controller.viewUser(post.userId)}>
+            View User
           </button>
           <hr />
         </div>
       ))}
     </>
-  );
+  )
 }
 
-export default PostsPage;
+export default PostsPage
