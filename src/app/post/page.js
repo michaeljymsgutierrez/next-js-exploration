@@ -3,6 +3,7 @@
 import Model from './model'
 import Controller from './controller'
 import DailyRandomFact from '../../components/daily-random-fact'
+import HumanizeString from '../../helpers/humanize-string'
 
 let counter = 0
 
@@ -17,6 +18,8 @@ function PostsPage() {
   return (
     <>
       <DailyRandomFact />
+      <hr />
+      <HumanizeString text="react-sample-patttern" capitalize={true} />
       <hr />
       <h2>Selected Post ID: {controller.clickedPostId}</h2>
       <hr />
